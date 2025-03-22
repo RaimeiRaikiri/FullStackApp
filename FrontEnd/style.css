@@ -1,0 +1,28 @@
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form > fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+form {
+    width: 50%;
+    height: 50%;
+}
+input {
+    height: 60%;
+    width: 50%;
+}
+input[type="submit"] {
+    height: 30%;
+    width: 30%;
+}

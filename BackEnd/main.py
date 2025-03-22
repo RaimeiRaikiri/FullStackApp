@@ -13,8 +13,16 @@ def get_contacts():
 
 
 
-@app.route("/create_contact", methods=["POST"])
+@app.route("/create_contact", methods=["OPTIONS", "POST"])
 def create_contact():
+    if request.method == "OPTIONS":
+        response = jsonify({"message": "opted"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+        return response, 204
+    
     first_name = request.json.get("firstName")
     last_name = request.json.get("lastName")
     email = request.json.get("email")

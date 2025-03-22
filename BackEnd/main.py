@@ -5,7 +5,7 @@ from models import Contact
 # CRUD
 
 
-@app.route("/contacts", methods=["GET, OPTIONS, POST"])
+@app.route("/contacts", methods=["GET", "OPTIONS", "POST"])
 def handle_contacts():
     if request.method == "OPTIONS":
         response = jsonify({"message": "opted"})

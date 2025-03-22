@@ -22,7 +22,7 @@ async function create_contact()
    })
    }
    
-   const response = fetch(base_url+"/create_contact", payload);
+   const response = await fetch(base_url+"/contacts", payload);
    
 
 }

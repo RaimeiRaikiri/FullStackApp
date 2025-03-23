@@ -22,9 +22,8 @@ def handle_contacts():
         
         if not first_name or not last_name or not email:
             return jsonify(
-                {"message": "error, contact needs first name, last name and email"},
-                400,
-                        )
+                {"message": "error, contact needs first name, last name and email"}
+                ), 400
         
         new_contact = Contact(first_name=first_name, last_name=last_name, email=email)
         try:
@@ -32,11 +31,10 @@ def handle_contacts():
             db.session.commit()
         except Exception as e:
             return jsonify(
-                {"message": str(e )},
-                400,
-                )
+                {"message": str(e )}
+                ), 400
             
-        return jsonify({"message": "User created!"}, 201 )
+        return jsonify({"message": "User created!"}), 201
     
     if request.method == "GET":
         contacts = Contact.query.all()
@@ -61,7 +59,7 @@ def alter_user(user_id):
         db.session.delete(contact)
         db.session.commit()
 
-        return jsonify({"message": "Deleted contact!"}, 201)
+        return jsonify({"message": "Deleted contact!"}), 201
     
     if request.method == "PATCH":
         contact = Contact.query.get(user_id) 
@@ -70,9 +68,8 @@ def alter_user(user_id):
             return jsonify(
                 {
                     "message": "error, no matching contact found"
-                }, 
-                404
-            )
+                }
+            ), 404
         
         data = request.json
         contact.first_name = data.get("firstName", contact.first_name)
@@ -81,7 +78,7 @@ def alter_user(user_id):
         
         db.session.commit() 
         
-        return jsonify({"message": "Updated contact!"}, 201)
+        return jsonify({"message": "Updated contact!"}), 201
 
 if __name__ == "__main__":
     with app.app_context():

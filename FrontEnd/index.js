@@ -25,6 +25,9 @@ async function create_contact()
    
    const response = await fetch(base_url+"/contacts", payload);
    
+   firstName.value = "";
+   lastName.value = "";
+   email.value = "";
 
 }
 

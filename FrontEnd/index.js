@@ -1,5 +1,6 @@
 const form = document.querySelector("#form");
-form.addEventListener("submit", function(){
+form.addEventListener("submit", function(event){
+    event.preventDefault();
     create_contact();
 });
 //fetch("http://127.0.0.1:5000/create_contact", payload)
@@ -22,7 +23,7 @@ async function create_contact()
    })
    }
    
-   const response = await fetch(base_url+"/create_contact", payload);
+   const response = await fetch(base_url+"/contacts", payload);
    
 
 }

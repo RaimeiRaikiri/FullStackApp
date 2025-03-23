@@ -1,5 +1,6 @@
 const form = document.querySelector("#form");
-form.addEventListener("submit", function(){
+form.addEventListener("submit", function(event){
+    event.preventDefault();
     create_contact();
 });
 //fetch("http://127.0.0.1:5000/create_contact", payload)
